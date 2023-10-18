@@ -127,8 +127,10 @@
     /* flex */
     width: 220px;
     transition: transform .5s;
+    z-index: 0;
 }
 
 .poster:hover {
     transform:scale(1.3);
+    z-index: 1;
 }

@@ -1,0 +1,73 @@
+.header {
+    z-index: 1;
+    height: 70px;
+    background-color: transparent;
+
+    display: flex;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    padding: 0 4%;
+    background-image: linear-gradient(180deg,rgba(0, 0, 0, 0.7),
+    rgba(255, 255, 255, 0));
+}
+
+.netflix-logo {
+    height: 25px;
+}
+
+.header-navigation {
+    display: flex;
+    list-style: none;
+    
+}
+
+.header-menu {
+    margin-left: 16px;
+}
+
+.header-menu a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.5s ease;
+}
+
+.header-menu a:hover {
+    color: #dbdbdb;
+}
+
+.right-section {
+    background-color: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.right-section button {
+    height: 40px;
+    width: 40px;
+    white-space: nowrap;
+    color: #fff;
+    background-color: transparent;
+    border: 0;
+}
+
+.profile-picture {
+    display: flex;
+    align-items: center;
+}
+
+.profile-img {
+    border-radius: 3px;
+}
+
+/* 스크롤 */
+.active {
+    background-color: #000;
+}

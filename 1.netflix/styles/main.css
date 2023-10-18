@@ -1,0 +1,118 @@
+.main-content {
+    position: relative;
+    margin-top: -70px;
+    z-index: 0;
+    width: 100%;
+    height: 45vw;
+}
+
+.main-content-container {
+}
+
+.main-content-container img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.main-content-description {
+    position: absolute;
+    top: 0;
+    left: 60px;
+    bottom: 30%;
+    width: 30%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.main-content-description .title {
+    font-size: 50px;
+    font-weight: 1000;
+}
+
+.main-content-description .summary {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.main-content-buttons {
+    margin-top: 15px;
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+.main-content-buttons button {
+    border: 0;
+    background-color: rgba(144, 144, 144, 0.5);
+    padding: 10px 18px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #ffffff;
+    cursor: pointer;
+    transition: opacity 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.main-content-buttons button:hover {
+    opacity: 0.8;
+}
+
+.main-content-buttons .play-button {
+    margin-right: 10px;
+}
+
+.sub-content {
+    width: 100%;
+    background-image: linear-gradient(0deg,rgba(0, 0, 0, 1) 80%,
+    rgba(255, 255, 255, 0));
+    /* height: 100px; */
+    position: relative;
+    /* z-index: 1; */
+    top: 80%;
+}
+
+.sub-contents-container {
+    margin: 0 60px 40px 60px;
+}
+
+.content-title {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.content-posters {
+    margin-top: 12px;
+    display: grid;
+    column-gap: 16px;
+    row-gap: 40px;
+}
+
+@media (max-width: 750px) {
+    .content-posters {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 751px) and (max-width: 949px) {
+    .content-posters {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 950px) {
+    .content-posters {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+.poster-container {
+}
+
+.poster {
+    border-radius: 3px;
+    width: 100%;
+}

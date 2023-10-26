@@ -1,24 +1,30 @@
 const list = document.getElementById('todo-list')
+const completedlist = document.getElementById('completed-list')
 const createBtn = document.getElementById('create-btn')
+const ongoingCounts = document.getElementById('ongoing-count')
+const completedCounts = document.getElementById('completed-count')
 
 let todos = []
-let ongoingTodos = []
-let completedTodos = []
+
+let date = new Date();
+let ongoingLength;
+let completedLength;
 
 createBtn.addEventListener('click', createNewTodo)
 
+// 생성한 요소를 노드에 붙이기
 function createNewTodo() {
     // 새로운 아이템 객체 생성
     const item = {
-        id: new Date().getTime(),
+        id: date.getTime(),
         text: '',
+        date: '',
         complete: false
     }
 
     // 배열 처음에 새로운 아이템을 추가
     todos.unshift(item)
     ongoingTodos = [...todos]
-    console.log('얕은복사 시험', ongoingTodos)
 
     // create Eelement
     const {itemEl, inputEl, removeBtnEl, editBtnEl} = createTodoElement(item)
@@ -27,13 +33,14 @@ function createNewTodo() {
     // 첫번째 자식 앞에 방금 생성한 아이템 추가
     list.prepend(itemEl)
 
+
     inputEl.removeAttribute('disabled')
     inputEl.focus()
 
     saveToLocalStorage()
 }
 
-// 요소 생성하기
+// 요소 생성하기 - 창이 새로 뜰 때, 요소가 새로 추가될 때 호출됨
 function createTodoElement(item) {
     const itemEl = document.createElement('div')
     itemEl.classList.add('item')
@@ -43,12 +50,18 @@ function createTodoElement(item) {
     checkboxEl.checked = item.complete
     if (item.complete) {
         itemEl.classList.add('complete')
+        console.log('처음에마 나옴')
     }
 
     const inputEl = document.createElement('input')
     inputEl.type = 'text'
     inputEl.value = item.text
     inputEl.setAttribute('disabled', '')
+
+    const dateEl = document.createElement('span')
+    dateEl.classList.add('date')
+    let today = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+    dateEl.innerText = today
 
     const actionsEl = document.createElement('div')
     actionsEl.classList.add('actions')
@@ -69,6 +82,7 @@ function createTodoElement(item) {
         } else {
             itemEl.classList.remove('complete')
         }
+        changeParentList(itemEl, item)
         saveToLocalStorage()
     })
 
@@ -97,9 +111,31 @@ function createTodoElement(item) {
 
     itemEl.appendChild(checkboxEl)
     itemEl.appendChild(inputEl)
+    itemEl.appendChild(dateEl)
     itemEl.appendChild(actionsEl)
     
     return {itemEl, inputEl, removeBtnEl, editBtnEl}
+}
+
+function changeParentList(itemEl, item) {
+    if (item.complete){
+        list.removeChild(itemEl)
+        completedlist.append(itemEl)
+    } else {
+        completedlist.removeChild(itemEl)
+        list.append(itemEl)
+    }
+    countTodos()
+}
+
+function countTodos() {
+    ongoingLength = list.childElementCount
+    completedLength = completedlist.childElementCount
+    console.log(ongoingLength)
+    console.log(completedLength)
+
+    ongoingCounts.innerText = ongoingLength
+    completedCounts.innerText = completedLength
 }
 
 function saveToLocalStorage() {
@@ -123,8 +159,17 @@ function displayTodos() {
         const item = todos[i]
         const { itemEl } = createTodoElement(item)
 
-        list.appendChild(itemEl)
+        // list.appendChild(itemEl)
+
+        if (item.complete) {
+            completedlist.appendChild(itemEl)
+        } else {
+            list.appendChild(itemEl)
+        }
     }
+
+    countTodos()
 }
 
+// 새로고침 될 때 보여줌
 displayTodos()

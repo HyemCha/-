@@ -8,20 +8,31 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Moirai+One&family=Nosifer&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Moirai+One&family=Orbit&family=Nosifer&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="app">
-        <header>
+        <header id="header">
             <h1>Todo App</h1>
             <button id="create-btn">add new todo</button>
         </header>
         <div class="ongoing-todo">
+            <div class="title">
+                <span>작업중</span>(
+                <span id="ongoing-count"></span>)
+            </div>
             <div id="todo-list">
             </div>
         </div>
+        <!-- <hr> -->
         <div class="completed-todo">
+            <div class="title">
+                <span>완료된 작업</span>(
+                <span id="completed-count"></span>)
+            </div>
+            <div id="completed-list">
 
+            </div>
         </div>
     </div>
 

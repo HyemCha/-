@@ -1,9 +1,10 @@
 * {
+    /* font-family: Nosifer; */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 button {
@@ -11,14 +12,118 @@ button {
     outline: none;
     border: none;
     cursor: pointer;
+    transition: color 0.4s ease;
+}
+
+input {
+    background-color: transparent;
+}
+
+button#create-btn {
+    border: 3px double;
+}
+
+button#create-btn:hover {
+    color: rgb(73, 73, 73);
+    background-color: rgb(227, 212, 193);
+}
+
+button.edit-btn:hover {
+    color: #808080;
 }
 
 body {
-    background-color: bisque;
+    background-color: #002F2F;;
     color: 000;
+    padding: 10px;
+}
+
+header h1 {
+    font-family: Moirai One;
 }
 
 .app header {
+    color: antiquewhite;
     display: flex;
     justify-content: space-around;
+    align-items: first baseline;
+}
+
+#create-btn {
+    font-size: 13px;
+    border-radius: 12px;
+    padding: 3px;
+    background-color: antiquewhite;
+
+}
+
+/* -------- list -------- */
+.ongoing-todo, .completed-todo {
+    display: flex;
+    flex-direction: column;
+}
+
+#todo-list {
+    display: flex;
+    margin-top: 20px;
+}
+
+.item {
+    display: flex;
+    border-radius: 10px;
+    background-color: rgb(244, 231, 215);
+    padding: 10px;
+    margin: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.item.complete {
+    background-color: #cacaca;
+}
+
+.item.complete input{
+    text-decoration: line-through;
+}
+
+@media (min-width: 710px){
+    #todo-list{
+        flex-direction: row;
+    }
+
+    .item {
+        width: calc(100%/3)
+    }
+}
+
+@media (min-width:300px) and (max-width: 709px){
+    .app header{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #todo-list{
+        flex-direction: column;
+    }
+
+    .item{
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 300px){
+    .app header{
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    #todo-list{
+        flex-direction: column;
+    }
+
+    .item{
+        justify-content: space-between;
+        flex-direction: column;
+    }
 }

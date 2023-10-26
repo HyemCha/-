@@ -2,6 +2,8 @@ const list = document.getElementById('todo-list')
 const createBtn = document.getElementById('create-btn')
 
 let todos = []
+let ongoingTodos = []
+let completedTodos = []
 
 createBtn.addEventListener('click', createNewTodo)
 
@@ -15,6 +17,8 @@ function createNewTodo() {
 
     // 배열 처음에 새로운 아이템을 추가
     todos.unshift(item)
+    ongoingTodos = [...todos]
+    console.log('얕은복사 시험', ongoingTodos)
 
     // create Eelement
     const {itemEl, inputEl, removeBtnEl, editBtnEl} = createTodoElement(item)
@@ -50,12 +54,12 @@ function createTodoElement(item) {
     actionsEl.classList.add('actions')
     
     const editBtnEl = document.createElement('button')
-    editBtnEl.classList.add('material-icons')
+    editBtnEl.classList.add('material-icons','edit-btn')
     editBtnEl.innerText = 'edit'
 
     const removeBtnEl = document.createElement('button')
     removeBtnEl.classList.add('material-icons', 'remove-btn')
-    removeBtnEl.innerText = 'remove-circles'
+    removeBtnEl.innerText = 'delete'
 
     checkboxEl.addEventListener('change', () => {
         item.complete = checkboxEl.checked
@@ -120,7 +124,6 @@ function displayTodos() {
         const { itemEl } = createTodoElement(item)
 
         list.appendChild(itemEl)
-        console.log(list.child)
     }
 }
 

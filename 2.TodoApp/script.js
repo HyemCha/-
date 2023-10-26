@@ -26,8 +26,7 @@ function createNewTodo() {
     inputEl.removeAttribute('disabled')
     inputEl.focus()
 
-    // 이벤트 등록
-    
+    saveToLocalStorage()
 }
 
 // 요소 생성하기
@@ -37,10 +36,9 @@ function createTodoElement(item) {
 
     const checkboxEl = document.createElement('input')
     checkboxEl.type = 'checkbox'
-
+    checkboxEl.checked = item.complete
     if (item.complete) {
         itemEl.classList.add('complete')
-
     }
 
     const inputEl = document.createElement('input')
@@ -67,10 +65,12 @@ function createTodoElement(item) {
         } else {
             itemEl.classList.remove('complete')
         }
+        saveToLocalStorage()
     })
 
     inputEl.addEventListener('blur', () => {
         inputEl.setAttribute('disabled', '')
+        saveToLocalStorage()
     })
 
     inputEl.addEventListener('input', () => {
@@ -85,6 +85,7 @@ function createTodoElement(item) {
     removeBtnEl.addEventListener('click', () => {
         todos = todos.filter(t => t.id !== item.id)
         itemEl.remove()
+        saveToLocalStorage()
     })
 
     actionsEl.appendChild(editBtnEl)
@@ -96,3 +97,31 @@ function createTodoElement(item) {
     
     return {itemEl, inputEl, removeBtnEl, editBtnEl}
 }
+
+function saveToLocalStorage() {
+    const data = JSON.stringify(todos)
+
+    window.localStorage.setItem('my_todos', data)
+}
+
+function loadFromLocalStorage() {
+    const data = localStorage.getItem('my_todos')
+    
+    if(data) {
+        todos = JSON.parse(data)
+    }
+}
+
+function displayTodos() {
+    loadFromLocalStorage();
+    
+    for(let i = 0; i < todos.length; i++) {
+        const item = todos[i]
+        const { itemEl } = createTodoElement(item)
+
+        list.appendChild(itemEl)
+        console.log(list.child)
+    }
+}
+
+displayTodos()

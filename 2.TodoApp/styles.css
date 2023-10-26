@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+    font-family: Orbit;
     /* border: 1px solid red; */
 }
 
@@ -12,7 +12,7 @@ button {
     outline: none;
     border: none;
     cursor: pointer;
-    transition: color 0.4s ease;
+    transition: color 0.4s ease, background-color 0.4s ease;
 }
 
 span {
@@ -37,20 +37,25 @@ button.edit-btn:hover {
     color: #808080;
 }
 
+button.remove-btn:hover {
+    color: #d47f7f;
+}
+
 body {
     background-color: #002F2F;;
     color: 000;
 }
 
 header h1 {
-    font-family: Moirai One;
+    font-family: Moirai One !important;
 }
 
 .app header {
     color: antiquewhite;
     display: flex;
     justify-content: space-around;
-    align-items: first baseline;
+    align-items: baseline;
+    margin:20px;
 }
 
 #create-btn {
@@ -65,7 +70,7 @@ header h1 {
 .ongoing-todo, .completed-todo {
     display: flex;
     flex-direction: column;
-    height: 500px;
+    /* height: 500px; */
     padding: 10px;
     margin: 10px;
 }
@@ -77,9 +82,13 @@ div.title {
     display: flex;
 }
 
-#todo-list {
-    display: flex;
-    flex-wrap: wrap;
+#todo-list, #completed-list {
+    margin-top: 20px;
+    /* display: flex;
+    flex-wrap: wrap; */
+    display: grid;
+    row-gap: 20px;
+    column-gap: 20px;
 }
 
 .item {
@@ -87,10 +96,10 @@ div.title {
     border-radius: 10px;
     background-color: rgb(244, 231, 215);
     padding: 10px;
-    margin: 10px;
+    /* margin: 10px; */
     align-items: center;
     flex-wrap: wrap;
-
+    justify-content: space-between;
 }
 
 .item.complete {
@@ -101,6 +110,12 @@ div.title {
     text-decoration: line-through;
 }
 
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+}
+
 .date {
     font-size: 10px;
     background-color: rgba(215, 178, 133, 0.757);
@@ -109,25 +124,29 @@ div.title {
 }
 
 @media (min-width: 710px){
-    #todo-list{
-        flex-direction: row;
+    #todo-list, #completed-list {
+        /* flex-direction: row; */
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
     .item {
-        width: calc(100%/3)
+        /* width: calc(100%/3) */
     }
 }
 
 @media (min-width:300px) and (max-width: 709px){
     .app header{
-        flex-direction: column;
-        align-items: center;
+        /* flex-direction: column; */
+        align-items: baseline;
         height: 80px;
-        justify-content: space-between;
+        /* justify-content: baseline; */
+
     }
 
-    #todo-list{
-        flex-direction: column;
+    #todo-list, #completed-list {
+        /* flex-direction: column; */
+        grid-template-columns: 1fr ;
+
     }
 
     .item{
@@ -139,11 +158,13 @@ div.title {
     .app header{
         flex-direction: column;
         align-items: center;
-        height: 80px;
+        /* height: 80px; */
     }
 
-    #todo-list{
-        flex-direction: column;
+    #todo-list, #completed-list {
+        /* flex-direction: column; */
+        grid-template-columns: repeat(1, 1fr);
+
     }
 
     .item{

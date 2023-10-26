@@ -27,20 +27,7 @@ function createNewTodo() {
     inputEl.focus()
 
     // 이벤트 등록
-    // checkboxEl.addEventListener('change', () => {
-    //     itemEl.classList.toggle('complete')
-    //     item.complete =!item.complete
-    // })
-
-    // editBtnEl.addEventListener('click', () => {
-    //     inputEl.removeAttribute('disabled')
-    //     inputEl.focus()
-    // })
-
-    // removeBtnEl.addEventListener('click', () => {
-    //     list.removeChild(itemEl)
-    //     todos = todos.filter(todo => todo.id!== item.id)
-    // })
+    
 }
 
 // 요소 생성하기
@@ -71,6 +58,34 @@ function createTodoElement(item) {
     const removeBtnEl = document.createElement('button')
     removeBtnEl.classList.add('material-icons', 'remove-btn')
     removeBtnEl.innerText = 'remove-circles'
+
+    checkboxEl.addEventListener('change', () => {
+        item.complete = checkboxEl.checked
+
+        if(item.complete) {
+            itemEl.classList.add('complete')
+        } else {
+            itemEl.classList.remove('complete')
+        }
+    })
+
+    inputEl.addEventListener('blur', () => {
+        inputEl.setAttribute('disabled', '')
+    })
+
+    inputEl.addEventListener('input', () => {
+        item.text = inputEl.value
+    })
+
+    editBtnEl.addEventListener('click', () => {
+        inputEl.removeAttribute('disabled')
+        inputEl.focus()
+    })
+
+    removeBtnEl.addEventListener('click', () => {
+        todos = todos.filter(t => t.id !== item.id)
+        itemEl.remove()
+    })
 
     actionsEl.appendChild(editBtnEl)
     actionsEl.appendChild(removeBtnEl)

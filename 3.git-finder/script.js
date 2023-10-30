@@ -1,7 +1,6 @@
 const searchInput = document.getElementById("search");
 const searchBtn = document.getElementById("search-btn");
 const userImg = document.querySelector("img");
-console.log(searchInput);
 
 async function getUserInfo(userName) {
   try {
@@ -13,8 +12,7 @@ async function getUserInfo(userName) {
             Authorization: `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`,
           },
         })
-      const jsonResponse1 = res.json()
-      console.log('jsonResponse1', jsonResponse1)
+      const jsonResponse1 = await res.json()
       showUserInfo(jsonResponse1)
   } catch (error) {
       console.log(error)
@@ -37,8 +35,6 @@ function addEventListener() {
 addEventListener();
 
 function showUserInfo(user) {
-  console.log(typeof user)
-  console.log(user.property)
-  // userImg.src = user.result.avatar_url;
+  userImg.src = user.avatar_url;
   
 }

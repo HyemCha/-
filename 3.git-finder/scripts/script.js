@@ -1,3 +1,5 @@
+import {token3}  from "./token.js";
+
 const searchInput = document.getElementById("search");
 const searchBtn = document.getElementById("search-btn");
 const userImg = document.querySelector("img");
@@ -13,8 +15,6 @@ const repoList = document.getElementById("repo-list");
 const reposTitle = document.querySelector('h3')
 const userInfoWrap = document.querySelector(".user-info-wrap");
 
-userInfoWrap.style.border = 'none'
-repoList.style.border = 'none'
 
 async function getUserInfo(userName) {
   try {
@@ -23,7 +23,7 @@ async function getUserInfo(userName) {
         `https://api.github.com/users/${userName}`,
         {
           headers: {
-            Authorization: `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`,
+            Authorization: `${token3}`,
           },
         })
         const jsonResponse1 = await res.json()
@@ -43,7 +43,7 @@ async function getUserRepos(user) {
         `https://api.github.com/users/${user}/repos?sort=updated&per_page=5&page=1`,
         {
           headers: {
-            Authorization: `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`,
+            Authorization: `${token3}`,
           },
         })
         const jsonResponse1 = await res.json()

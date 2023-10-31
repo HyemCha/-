@@ -1,0 +1,116 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    position: sticky;
+    top: 20px;
+    margin: 20px auto;
+}
+
+.search-wrap {
+    display: flex;
+    width: 600px;
+    /* justify-content: center; */
+    border-radius: 10px;
+    border: 2px solid black;
+    /* padding: 10px; */
+}
+
+#search {
+    width: 80%;
+    height: 40px;
+    border: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-left: 5px;
+    font-size: 17px;
+}
+
+#search:focus {
+    outline: none;
+}
+
+#search-btn {
+    width: 20%;
+    border-radius: 0 10px 10px 0;
+    border: none;
+    background-color: rgb(215, 215, 250);
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.user-info-wrap {
+    display: flex;
+    border-radius: 15px;
+    border: 2px solid black;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.user-image img {
+    width:50%;
+    border-radius: 50%;
+}
+
+.user-info-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-tags {
+    display: flex;
+}
+
+.user-bio {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-repo-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+#repo-list {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    border: 2px solid black;
+    /* padding: 15px; */
+}
+
+.repo-wrapper {
+    display: flex;
+    border-bottom: 1px solid rgb(188, 185, 185);
+    padding: 15px;
+    height: 80px;
+    align-items: center;
+}
+
+.repo-wrapper:last-of-type {
+    border-bottom: none;
+}
+
+.repo-left {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.repo-title {
+    font-size: 20px;
+}
+
+.repo-description {
+    font-size: 15px;
+    color: grey;
+}
+
+.repo-right {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}

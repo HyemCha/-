@@ -4,23 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="header">
-        <h1>검색해보세요</h1>
+        <!-- <h1>검색해보세요</h1> -->
         <div class="search-wrap">
             <input type="text" id="search" placeholder="Search...">
             <button id="search-btn">검색하기</button>
         </div>
     </div>
-    <div class="user-info-wrap">
-        <div class="user-name">
+    <div class="main-section">
+        <div class="user-info-wrap">
+            <div class="user-info-left">
+                <div class="user-image">
+                    <img src="" alt="">
+                </div>
+            </div>
+            <div class="user-info-right">
+                <div class="user-tags">
+                    <div id="public-repos"></div>
+                    <div id="public-gists"></div>
+                    <div id="followers"></div>
+                    <div id="following"></div>
+                </div>
+                <div class="user-bio">
+                    <div id="user-name"></div>
+                    <div id="user-email"></div>
+                    <div id="user-blog"></div>
+                    <div id="user-location"></div>
+                </div>
+            </div>
         </div>
-        <div class="user-image">
-            <img src="" alt="">
+        <div class="user-repo-wrap">
+            <h3></h3>
+            <div id="repo-list"></div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>

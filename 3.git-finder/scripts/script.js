@@ -12,10 +12,12 @@ async function getUserInfo(userName) {
             Authorization: `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`,
           },
         })
-      const jsonResponse1 = await res.json()
+        const jsonResponse1 = await res.json()
+        console.log(jsonResponse1)
       showUserInfo(jsonResponse1)
   } catch (error) {
       console.log(error)
+      console.log('error')
   } finally {
       console.log('finally')
   }
@@ -35,6 +37,9 @@ function addEventListener() {
 addEventListener();
 
 function showUserInfo(user) {
+  if (user === null) {
+    console.log('user is null');
+  }
   userImg.src = user.avatar_url;
   
 }

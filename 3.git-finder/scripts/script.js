@@ -65,6 +65,9 @@ function addEventListener() {
 
   searchBtn.addEventListener('click', () => {
     let user = searchInput.value;
+    if (repoList.childElementCount !== 0) {
+      clearRepos()
+    }
     getUserInfo(user);
     getUserRepos(user);
   })
@@ -139,6 +142,14 @@ function createRepo(repo) {
   repoStars.textContent = `stars: ${repo.stargazers_count}`
   repoWarchers.textContent = `watchers: ${repo.watchers_count}`
   repoForks.textContent = `forks: ${repo.forks_count}`
+}
+
+function clearRepos() {
+  repoList.style.border = '0px'
+  const repos = document.querySelectorAll(".repo-wrapper");
+  repos.forEach(element => {
+    element.remove();
+  });
 }
 
 function initialRepo() {

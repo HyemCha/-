@@ -11,6 +11,10 @@ const followers = document.getElementById("followers");
 const following = document.getElementById("following");
 const repoList = document.getElementById("repo-list");
 const reposTitle = document.querySelector('h3')
+const userInfoWrap = document.querySelector(".user-info-wrap");
+
+userInfoWrap.style.border = 'none'
+repoList.style.border = 'none'
 
 async function getUserInfo(userName) {
   try {
@@ -53,21 +57,21 @@ async function getUserRepos(user) {
   }
 }
 
-// function addEventListener() {
-//   // searchInput.addEventListener('keydown', (e) => {
-//   //   // getUserInfo(e.target.value);
-//   //   console.log(e.target.value);
-//   // })
+function addEventListener() {
+  // searchInput.addEventListener('keydown', (e) => {
+  //   // getUserInfo(e.target.value);
+  //   console.log(e.target.value);
+  // })
 
-//   searchBtn.addEventListener('click', () => {
-//     let user = searchInput.value;
-//     getUserInfo(user);
-//     getUserRepos(user);
-//   })
-// }
+  searchBtn.addEventListener('click', () => {
+    let user = searchInput.value;
+    getUserInfo(user);
+    getUserRepos(user);
+  })
+}
 
-getUserInfo("octocat");
-getUserRepos("octocat");
+// getUserInfo("octocat");
+// getUserRepos("octocat");
 
 addEventListener();
 
@@ -81,6 +85,8 @@ function showUserInfo(user) {
   publicGists.textContent = `Public Gists: ${user.public_gists}`
   followers.textContent = `Followers: ${user.followers}`
   following.textContent = `Following: ${user.following}`
+
+  userInfoWrap.style.border = '2px solid black'
 }
 
 function showUserRepos(repos) {
@@ -91,6 +97,9 @@ function showUserRepos(repos) {
   repos.forEach(element => {
     createRepo(element);
   });
+
+  repoList.style.border = '2px solid black'
+
 }
 
 function createRepo(repo) {

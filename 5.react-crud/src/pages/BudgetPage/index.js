@@ -48,8 +48,16 @@ export const Budget = () => {
                 <Form handleSubmit={handleSubmit} content={content} setContent={setContent} cost={cost} setCost={setCost} />
                 <List handleClick={handleClick} myBudget={myBudget} setMyBudget={setMyBudget} />
 
-                <div className=''>
-                    총 금액: {totalBudget()}
+                <div className='flex items-center justify-between mt-2'>
+                    <div className=''>
+                        총 금액: {totalBudget()}
+                    </div>
+                    <div
+                        onClick={handleRemoveClick}
+                        className='p-2 text-pink-400 border-2 border-pink-400 rounded hover:text-white hover:bg-pink-200 hover:cursor-pointer'
+                    >
+                        전체 삭제
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-package springmvc.reqandres;
+package springmvc.reqandres.data;
 
 import lombok.Data;
 

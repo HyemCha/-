@@ -26,9 +26,14 @@ public class PostRepository {
     }
 
     public Post findPostAndCommentById(Long postId) {
-        return em.createQuery("select distinct p from Post p join fetch p.comments where p.id=:postId", Post.class)
+        log.info("postId={}", postId);
+        Post foundPost = em.createQuery("select distinct p from Post p join fetch p.comments c where p.id=:postId", Post.class)
                 .setParameter("postId", postId)
                 .getSingleResult();
+
+        log.info("foundPost={}", foundPost);
+
+        return foundPost;
     }
 
     public List<String> findAll() {

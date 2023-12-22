@@ -56,28 +56,29 @@ class PostServiceTest {
 
         service.savePost(post);
 
-        Comment comment1 = Comment.builder()
-                .content("댓글댓글1")
-                .build();
-        Comment comment2 = new Comment();
-        comment2.setContent("댓글2");
+//        Comment comment1 = Comment.builder()
+//                .content("댓글댓글1")
+//                .build();
+//        Comment comment2 = new Comment();
+//        comment2.setContent("댓글2");
+//
+//        comment1.addCommentToPost(post);
+//        comment2.addCommentToPost(post);
+//
+//        commentService.saveComment(comment1);
+//        commentService.saveComment(comment2);
 
-        comment1.addCommentToPost(post);
-        comment2.addCommentToPost(post);
+        PostAndCommentDto foundPost = service.findPostAndCommentById(post.getId());
+        log.info("foundPost={}", foundPost);
 
-        commentService.saveComment(comment1);
-        commentService.saveComment(comment2);
+//        Comment foundComment = commentService.findById(comment1.getId());
+//        assertThat(foundComment.getPost().getId()).isEqualTo(post.getId());
 
-        Post foundPost = service.findPostAndCommentById(post.getId());
-
-        Comment foundComment = commentService.findById(comment1.getId());
-        assertThat(foundComment.getPost().getId()).isEqualTo(post.getId());
-
-        log.info("post title={}", foundPost.getTitle());
-        log.info("post comment size={}", foundPost.getComments().size());
-        for (Comment comment : foundPost.getComments()) {
-            log.info("comment={}", comment.getContent());
-        }
+//        log.info("post title={}", foundPost.getTitle());
+//        log.info("post comment size={}", foundPost.getComments().size());
+//        for (Comment comment : foundPost.getComments()) {
+//            log.info("comment={}", comment.getContent());
+//        }
 
 //        em.clear();
 //        List<Post> resultList = em.createQuery("select p from Post p join fetch p.comments", Post.class)

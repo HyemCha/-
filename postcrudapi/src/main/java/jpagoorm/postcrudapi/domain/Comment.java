@@ -2,11 +2,12 @@ package jpagoorm.postcrudapi.domain;
 
 import jakarta.persistence.*;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter
+@Data
 public class Comment {
     @Id @GeneratedValue
     @Column(name = "comment_id")
@@ -20,6 +21,11 @@ public class Comment {
     public void addCommentToPost(Post post) {
         this.post = post;
         post.getComments().add(this);
+    }
+
+    public void removeCommentFromPost() {
+        this.post = null;
+        this.post.getComments().remove(this);
     }
 
     @Builder

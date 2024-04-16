@@ -1,11 +1,9 @@
 package jpagoorm.postcrudapi.service;
 
+import jakarta.transaction.Transactional;
 import jpagoorm.postcrudapi.domain.Comment;
 import jpagoorm.postcrudapi.repository.CommentRepository;
-import jpagoorm.postcrudapi.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
